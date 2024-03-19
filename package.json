@@ -1,0 +1,26 @@
+{
+	"dependencies": {
+		"inquirer": "^9.2.16",
+		"luxon": "^3.4.4"
+	},
+	"name": "sprint_heighliner",
+	"version": "1.0.0",
+	"description": "flexible node-based sprint navigator",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ayfor/sprint_heighliner.git"
+	},
+	"keywords": [
+		"scrum"
+	],
+	"author": "ayfor",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ayfor/sprint_heighliner/issues"
+	},
+	"homepage": "https://github.com/ayfor/sprint_heighliner#readme"
+}
