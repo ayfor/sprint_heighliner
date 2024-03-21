@@ -45,6 +45,24 @@ const secondQuery = [
 
 const calculateProjectedSprintDates = (answers) => {
 	const { sprintLength, startDate } = answers;
+
+	let dateList = [];
+	let datesAdded = 0;
+	// Parse the start date from the given string
+	let currentDate = luxon.DateTime.fromFormat(startDate, "dd-MM-yyyy");
+
+	while (datesAdded < numDates) {
+		// Check if the current date is not a Saturday (6) or Sunday (7)
+		if (currentDate.weekday < 6) {
+			// Add the formatted date string to the list if it's a weekday
+			dateList.push(currentDate.toFormat("dd-MM-yyyy"));
+			datesAdded++;
+		}
+		// Move to the next day regardless
+		currentDate = currentDate.plus({ days: 1 });
+	}
+
+	return dateList;
 };
 
 inquirer.prompt(firstQuery).then((answers) => {
