@@ -19,7 +19,7 @@ const firstQuery = [
 	{
 		type: "input",
 		name: "startDate",
-		message: "What is the start date of the first sprint? (YYYY-MM-DD)",
+		message: "What is the start date of the first sprint? (DD-MM-YYYY)",
 	},
 	{
 		type: "number",
@@ -38,20 +38,20 @@ const secondQuery = [
 	{
 		type: "list",
 		name: "excludedDates",
-		message: "Are there any dates you want to exclude? (YYYY-MM-DD, YYYY-MM-DD)",
+		message: "Are there any dates you want to exclude? (e.g. public holidays, team events)",
 		choices: projectedSprintDates,
 	},
 ];
 
-const calculateProjectedSprintDates = (answers) => {
-	const { sprintLength, startDate } = answers;
+const getProjectedSprintDates = (answers) => {
+	const { sprintLength, startDate, numberOfSprints } = answers;
 
 	let dateList = [];
 	let datesAdded = 0;
 	// Parse the start date from the given string
 	let currentDate = luxon.DateTime.fromFormat(startDate, "dd-MM-yyyy");
 
-	while (datesAdded < numDates) {
+	while (datesAdded < sprintLength) {
 		// Check if the current date is not a Saturday (6) or Sunday (7)
 		if (currentDate.weekday < 6) {
 			// Add the formatted date string to the list if it's a weekday
@@ -65,6 +65,8 @@ const calculateProjectedSprintDates = (answers) => {
 	return dateList;
 };
 
-inquirer.prompt(firstQuery).then((answers) => {
-	const initialAnswers = answers;
-});
+inquirer
+	.prompt(firstQuery)
+	.then((answers) => {})
+
+	.then(() => {});
