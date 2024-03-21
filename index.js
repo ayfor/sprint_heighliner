@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
 
 const daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 let projectedSprintDates = [];
 
@@ -26,7 +27,7 @@ const firstQuery = [
 		message: "How many days will the break be between sprints?",
 	},
 	{
-		type: "list",
+		type: "checkbox",
 		name: "avoidedDaysOfWeek",
 		message: "Are there any days of the week that a Sprint should not end on? (e.g. Friday, Sunday)",
 		choices: daysOfTheWeek,
@@ -48,5 +49,4 @@ const calculateProjectedSprintDates = (answers) => {
 
 inquirer.prompt(firstQuery).then((answers) => {
 	const initialAnswers = answers;
-	console.log(initialAnswers);
 });
